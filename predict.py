@@ -4,7 +4,6 @@ from datetime import datetime
 import joblib
 
 # Load your trained model (assuming you have saved it using joblib)
-# model = joblib.load("velib_model.pkl")
 model = joblib.load("bike_availability_model.pkl")
 
 
@@ -41,4 +40,10 @@ def get_prediction(station_id, date, time):
 
     # Make prediction
     prediction = model.predict(X)
-    return prediction[0]
+
+    # Calculate percentages
+    ebikes_percentage = (prediction[0] / X["num_ebikes_available"].mean()) * 100
+    bikes_percentage = (prediction[1] / X["num_bikes_available"].mean()) * 100
+    free_docks_percentage = (prediction[2] / X["num_docks_available"].mean()) * 100
+
+    return (ebikes_percentage, bikes_percentage, free_docks_percentage)
