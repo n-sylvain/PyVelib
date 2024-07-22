@@ -4,7 +4,8 @@ from datetime import datetime
 import joblib
 
 # Load your trained model (assuming you have saved it using joblib)
-model = joblib.load("velib_model.pkl")
+# model = joblib.load("velib_model.pkl")
+model = joblib.load("bike_availability_model.pkl")
 
 
 def get_current_status(station_id):
