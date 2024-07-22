@@ -1,7 +1,7 @@
 import sqlite3
 import pandas as pd
 from datetime import datetime
-from sklearn.externals import joblib
+import joblib
 
 # Load your trained model (assuming you have saved it using joblib)
 model = joblib.load("velib_model.pkl")
